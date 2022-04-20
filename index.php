@@ -1,3 +1,14 @@
+<?php
+error_reporting(0);
+session_start();
+
+$COOKIE_SERVER = "21232f297a57a5a743894a0e4a801fc3";
+
+if(!$_COOKIE['username'] == $COOKIE_SERVER)
+  header("Location: login.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,5 +20,6 @@
 <body>
   <h1>CyberJutsu - Wind Team</h1>
   <p>Hello World!</p>
+  
 </body>
 </html>
