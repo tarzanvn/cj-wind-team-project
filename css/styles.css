@@ -76,3 +76,7 @@ body {
   color: #fff;
   height: 40px
 }
+
+input[type="submit"]:disabled {
+  display: none;
+}
