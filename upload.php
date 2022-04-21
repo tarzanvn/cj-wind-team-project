@@ -1,21 +1,36 @@
 <?php
+
 if(!isset($_SESSION['username']) and $_SESSION['username'] !== 'admin'){
     header("Location: login.php");
 }else{
-    $dir = "upload/" + session_id();
-    if(!file_exists($dir))
-        mkdir($dir);
-    if(isset($_GET["debug"])) die(highlight_file(__FILE__));
+    $dir1 = "upload/";
+    $dir2 = "temp/";
+    $pattern = "/.+(\.php)$/gim";
     if(isset($_FILES["file"])) {
-        $error = '';
-        $success = '';
-        try {
-            $file = $dir . "/" . $_FILES["file"]["name"];
-            move_uploaded_file($_FILES["file"]["tmp_name"], $file);
-            $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
-        } catch(Exception $e) {
-            $error = $e->getMessage();
+        if($_FILES['file']['size'] < 1024){
+            if(!preg_match($pattern, $_FILES['file']['name'])){
+                $file_name = strtolower($_FILES['file']['name']);
+                move_uploaded_file($_FILES['file']['tmp_name'], $dir2.$file_name);
+                try {
+                    if(getimagesize($file_name)){
+                        move_uploaded_file($dir2.$file_name, $dir1.$file_name);
+                    }else{
+                        unlink($dir2.$file_name);
+                        sleep(1);
+                    }
+                    
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+
+            }else{
+                die("Hack Detected");
+            }
+            
+        }else{
+            die("File too big , size file must < 1024 kb");
         }
+        
     }
 }
 
