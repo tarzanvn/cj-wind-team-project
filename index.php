@@ -13,6 +13,7 @@
 </head>
 
 <?php
+error_reporting(0);
 session_start();
 if (!isset($_SESSION["logged"])){  
     header("Location: login.php");
@@ -33,9 +34,9 @@ if(isset($_FILES["file"])) {
         if(is_array(getimagesize($file))){
             $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
         }else{
+            sleep(3);
             unlink($file);
-            $error = 'File Dangerous , Deleted File';
-            sleep(1);
+            $error = "DANGEROUS FILE";
         }
     } catch(Exception $e) {
         $error = $e->getMessage();
@@ -49,7 +50,7 @@ if(isset($_FILES["file"])) {
     <div class="col-md-7">
       <div class="card p-3 py-4">
         <div class="text-center">
-          <!-- <img src="./images/cbjs.png" width="100" class="rounded-circle"> -->
+          <!-- <img src="./avatar/cbjs.png" width="100" class="rounded-circle"> -->
           <?php 
               if($file){
                 echo "<img src=".$file." width=100 height=100 border-radius=50% class=rounded-circle>";
@@ -81,6 +82,9 @@ if(isset($_FILES["file"])) {
             </form>
           </div>
         </div>
+
+        <span style="color:red"><?php echo $error; ?></span>
+        <span style="color:green"><?php echo $success; ?></span>
               <!-- Debug  -->
         <!-- http://localhost/index.php?debug -->
       </div>
