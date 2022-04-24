@@ -2,7 +2,7 @@
 session_start();
 $user = $_POST["user"];
 $pass = $_POST["pass"];
-if ($user === "admin" and $pass === "admin"){
+if ($user === "wind" and $pass === "win"){
 	$_SESSION["logged"] = 1;
 	header('Location: index.php');
 }

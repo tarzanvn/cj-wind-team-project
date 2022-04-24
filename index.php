@@ -24,12 +24,12 @@
           $file = $dir . $_FILES["file"]["name"];
           move_uploaded_file($_FILES["file"]["tmp_name"], $file);
           if (is_array(getimagesize($file))) {
-              $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
+              // $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
           } else {
-              sleep(3);
+              // sleep(3);
               unlink($file);
               $file = $default_avatar;
-              $error = "DANGEROUS FILE";
+              // $error = "DANGEROUS FILE";
           }
       } catch (Exception $e) {
           $error = $e->getMessage();
@@ -77,7 +77,7 @@
               </form>
           </div>
           <div class="text-center mt-3">
-            <h3 class="mt-2 mb-0">CyberJutsu</h3> <span>We make computer security easier to learn</span>
+            <h3 class="mt-2 mb-0">CyberJutsu</h3> <span><b>We make computer security easier to learn</b></span>
             <div class="px-4 mt-1">
               <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
