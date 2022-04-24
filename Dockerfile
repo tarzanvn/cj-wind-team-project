@@ -2,7 +2,7 @@ FROM php:7.3-apache
 
 # put files
 WORKDIR /var/www/html/
-COPY . .
+COPY ./src .
 COPY docker-php.conf /etc/apache2/conf-available/docker-php.conf
 
 # config permission
