@@ -1,0 +1,7 @@
+version: "3.6"
+services:
+  cbjs-project-week1:
+      image: cyberjutsu/wind-team:cbjs-project-week1
+      restart: unless-stopped
+      ports:
+        - "0.0.0.0:12010:80"
