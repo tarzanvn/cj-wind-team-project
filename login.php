@@ -69,11 +69,13 @@
 
 <?php
 session_start();
-$user = $_POST["user"];
-$pass = $_POST["pass"];
-if ($user === "admin" and $pass === "admin"){
-	$_SESSION["logged"] = 1;
-	header('Location: index.php');
+if(isset($_POST)){
+	$user = $_POST["user"];
+	$pass = $_POST["pass"];
+	if ($user === "admin" and $pass === "admin"){
+		$_SESSION["isAdmin"] = 1;
+		header("Location: index.php");
+	}
 }
 ?>
 	

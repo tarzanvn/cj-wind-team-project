@@ -15,8 +15,8 @@
 <?php
 error_reporting(0);
 session_start();
-if (!isset($_SESSION["logged"])){  
-    header("Location: login.php");
+if(!isset($_SESSION["isAdmin"])){  
+  header("Location: login.php");
 }
 
 $dir = 'avatar/';

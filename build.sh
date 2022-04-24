@@ -13,5 +13,5 @@ sudo docker build --no-cache -t $TAGNAME --file $DOCKERFILE_NAME .
 
 # Below line is for apps that has 1 Dockerfile only
 # Remember to change expose port too
-PORT=8090
+PORT=9090
 sudo docker run --name $DOCKERNAME -d -p $PORT:80 -it $TAGNAME
