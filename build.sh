@@ -5,7 +5,7 @@ DOCKERNAME=cbjs-project-week1
 DOCKERFILE_NAME=Dockerfile
 
 # Dont change this :(
-TAGNAME=cyberjutsu/training-labs:$DOCKERNAME
+TAGNAME=cyberjutsu/wind-team:$DOCKERNAME
 
 sudo docker stop $DOCKERNAME
 sudo docker rm $DOCKERNAME
