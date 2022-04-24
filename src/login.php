@@ -1,10 +1,16 @@
 <?php
 session_start();
-$user = $_POST["user"];
-$pass = $_POST["pass"];
-if ($user === "wind" and $pass === "win"){
-	$_SESSION["logged"] = 1;
-	header('Location: index.php');
+if (isset($_SESSION["logged"])) {
+	header("Location: index.php");
+}
+
+if (isset($_POST["user"]) && isset($_POST["pass"])) {
+	$user = $_POST["user"];
+	$pass = $_POST["pass"];
+	if ($user === "wind" and $pass === "win"){
+		$_SESSION["logged"] = 1;
+		header('Location: index.php');
+	}
 }
 ?>
 <!DOCTYPE html>
