@@ -21,16 +21,17 @@ if (isset($_GET["debug"])) {
 
 if (isset($_FILES["file"])) {
     try {
-        $file = $dir . $_FILES["file"]["name"];
-        move_uploaded_file($_FILES["file"]["tmp_name"], $file);
-        if (is_array(getimagesize($file))) {
-            // $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
-        } else {
-            // sleep(3);
+      $white_list_extension = ["jpg", "gif", "png"];
+      $extension_file = end(explode(".", $_FILES["file"]["name"]));
+
+      $file = $dir . $_FILES["file"]["name"];
+      move_uploaded_file($_FILES["file"]["tmp_name"], $file);
+      // $success = 'Successfully uploaded file at: <a href="/' . $file . '">/' . $file . ' </a>';
+      if (!in_array($extension_file, $white_list_extension)) {
             unlink($file);
             $file = $default_avatar;
             // $error = "DANGEROUS FILE";
-        }
+      }
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
