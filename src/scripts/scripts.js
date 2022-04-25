@@ -1,5 +1,5 @@
 function onAvatarSelected() {
-  newAvatarInfo = "You can click <b>avatar</b> to update it";
+  newAvatarInfo = "";
   isDisableUpdate = true;
   avatar = document.getElementById("avatar");
   if (avatar && avatar.value) {
